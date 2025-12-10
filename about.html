@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olga Michelle | Sobre Mí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="resources/css/styles.css">
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="nav-capsule">
+            <a href="index.html" class="nav-btn">Inicio</a>
+            <a href="about.html" class="nav-btn active">Acerca de Mí</a>
+            <a href="porfolio.html" class="nav-btn">Proyectos</a>
+            <a href="contact.html" class="nav-btn">Contacto</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="about-split">
+            <div class="glass-card">
+                <h2>¿Quién soy?</h2>
+                <p style="color:#ccc; margin-bottom: 20px; line-height: 1.8;">
+                    Soy <strong>Olga Michelle Rodríguez Bahena</strong>, originaria de León, Gto. Desde la preparatoria, me apasionó la ingeniería en computación, la programación web y los videojuegos. <br><br>
+                    A lo largo de la carrera, he aprendido de grandes profesionales y me enfoco en el liderazgo y el trabajo en equipo.
+                </p>
+                <h3 style="color:white; font-size:1.2rem; margin-top:30px;">Trayectoria</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="t-year">2020</div><div class="t-title">Inicios en Programación</div></div>
+                    <div class="timeline-item"><div class="t-year">2023</div><div class="t-title">Ingreso a UDL (Ing. Computación)</div></div>
+                    <div class="timeline-item"><div class="t-year">Actualidad</div><div class="t-title">Desarrollando perfil Fullstack</div></div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="margin-bottom: 20px; color:white;">Skills</h3>
+                <div class="skill-item"><div class="skill-name"><span>Frontend</span><span>50%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 50%"></div></div></div>
+                <div class="skill-item"><div class="skill-name"><span>UI Design</span><span>40%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 40%"></div></div></div>
+                <div class="skill-item"><div class="skill-name"><span>Liderazgo</span><span>80%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 80%"></div></div></div>
+
+                <div class="cat-trigger" onclick="openCatsModal()" style="margin-top: 30px;">
+                    <i class="fas fa-cat" style="font-size: 1.8rem;"></i>
+                    <div style="text-align:left;"><div style="font-weight:bold; font-size:1rem;">Junta Directiva (9 Gatos)</div><div style="font-size:0.8rem; opacity:0.8;">Click para conocer al equipo</div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals & Widgets -->
+    <div id="modalV2" class="modal-wrap"><div class="modal-box glass-card"><span onclick="closeModal()" style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5rem; color:white;">&times;</span><h3 id="mTitle" style="color:var(--primary);"></h3><div id="mDesc" style="color:#ddd;"></div></div></div>
+    <div class="cat-patrol-area"><div class="walking-cat-btn" onclick="toggleChat()"><i class="fas fa-cat"></i></div></div>
+    <div class="ai-chat-window" id="aiChat"><div class="chat-header"><h4>Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()"></i></div><div class="chat-body" id="chatBody"><div class="msg bot">¡Miau!</div></div><div class="chat-input-area"><input id="chatInput" class="chat-input"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div>
+    
+    <footer class="site-footer"><p>© 2024 Olga Michelle.</p></footer>
+    <script src="resources/js/script.js"></script>
+</body>
+</html>

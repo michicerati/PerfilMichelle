@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olga Michelle | Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="resources/css/styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader"><i class="fas fa-cat loader-cat"></i><div class="loader-text">INICIALIZANDO...</div></div>
+
+    <!-- Navegación -->
+    <div class="nav-container">
+        <nav class="nav-capsule">
+            <a href="index.html" class="nav-btn active">Inicio</a>
+            <a href="about.html" class="nav-btn">Acerca de Mí</a>
+            <a href="porfolio.html" class="nav-btn">Proyectos</a>
+            <a href="contact.html" class="nav-btn">Contacto</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="hero-layout">
+            <div class="profile-glow-container">
+                <div class="glow-ring"></div>
+                <img src="resources/images/Perfil.jpg" alt="Perfil" class="profile-img">
+            </div>
+            <h1>Olga Michelle</h1>
+            <div class="typewriter" id="typewriter-text"></div>
+            <div class="pitch-glass">"Amo la ingeniería, el aprendizaje constante y los gatos que hacen más ligero cada proyecto. Fusiono la lógica del código con la creatividad del diseño." 🐱⚡</div>
+            
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                <a href="#" class="btn-neon" onclick="alert('Descargando CV...')"><i class="fas fa-download"></i> Descargar CV</a>
+                <a href="contact.html" class="btn-neon btn-outline">Contáctame</a>
+            </div>
+
+            <div class="social-bar">
+                <a href="https://github.com/michicerati" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:michelleolgacerati@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Widgets -->
+    <div class="cat-patrol-area"><div class="walking-cat-btn" onclick="toggleChat()"><i class="fas fa-cat"></i><div class="cat-tooltip">¡Chat IA!</div></div></div>
+    <div class="ai-chat-window" id="aiChat">
+        <div class="chat-header"><h4><i class="fas fa-paw"></i> Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i></div>
+        <div class="chat-body" id="chatBody"><div class="msg bot">¡Miau! Soy el asistente de Olga. 😺</div></div>
+        <div class="chat-input-area"><input type="text" id="chatInput" class="chat-input" placeholder="Escribe..." onkeypress="handleEnter(event)"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div>
+    </div>
+    <footer class="site-footer"><p>© 2024 Olga Michelle. Code & Cats <i class="fas fa-cat"></i>.</p></footer>
+    <script src="resources/js/script.js"></script>
+</body>
+</html>
