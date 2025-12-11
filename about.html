@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olga Michelle | Sobre Mí</title>
+    <title>Olga Michelle | Acerca de Mí</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 <body>
+    <div class="bg-layer base"></div>
+    <div class="bg-layer alt"></div>
+
+    <div id="preloader"><i class="fas fa-cat loader-cat"></i><div class="loader-text">CARGANDO...</div></div>
+
     <div class="nav-container">
         <nav class="nav-capsule">
             <a href="index.html" class="nav-btn">Inicio</a>
@@ -22,11 +27,8 @@
         <section class="about-split">
             <div class="glass-card">
                 <h2>¿Quién soy?</h2>
-                <p style="color:#ccc; margin-bottom: 20px; line-height: 1.8;">
-                    Soy <strong>Olga Michelle Rodríguez Bahena</strong>, originaria de León, Gto. Desde la preparatoria, me apasionó la ingeniería en computación, la programación web y los videojuegos. <br><br>
-                    A lo largo de la carrera, he aprendido de grandes profesionales y me enfoco en el liderazgo y el trabajo en equipo.
-                </p>
-                <h3 style="color:white; font-size:1.2rem; margin-top:30px;">Trayectoria</h3>
+                <p>Soy <strong>Olga Michelle Rodríguez Bahena</strong>, originaria de León, Gto. Desde la preparatoria, me apasionó la ingeniería en computación, la programación web y los videojuegos. <br><br>A lo largo de la carrera, he aprendido de grandes profesionales y me enfoco en el liderazgo y el trabajo en equipo.</p>
+                <h3>Trayectoria</h3>
                 <div class="timeline">
                     <div class="timeline-item"><div class="t-year">2020</div><div class="t-title">Inicios en Programación</div></div>
                     <div class="timeline-item"><div class="t-year">2023</div><div class="t-title">Ingreso a UDL (Ing. Computación)</div></div>
@@ -35,21 +37,86 @@
             </div>
 
             <div class="glass-card">
-                <h3 style="margin-bottom: 20px; color:white;">Skills</h3>
+                <h3 style="margin-top: 0;">Skills</h3>
                 <div class="skill-item"><div class="skill-name"><span>Frontend</span><span>50%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 50%"></div></div></div>
                 <div class="skill-item"><div class="skill-name"><span>UI Design</span><span>40%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 40%"></div></div></div>
                 <div class="skill-item"><div class="skill-name"><span>Liderazgo</span><span>80%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 80%"></div></div></div>
 
-                <div class="cat-trigger" onclick="openCatsModal()" style="margin-top: 30px;">
-                    <i class="fas fa-cat" style="font-size: 1.8rem;"></i>
-                    <div style="text-align:left;"><div style="font-weight:bold; font-size:1rem;">Junta Directiva (9 Gatos)</div><div style="font-size:0.8rem; opacity:0.8;">Click para conocer al equipo</div></div>
+                <div class="cat-carousel-widget" onclick="openCatsModal()">
+                    <img src="resources/images/Becario.jpg" id="widgetCatImg" class="cat-widget-img" alt="Gato" onerror="this.src='https://placehold.co/100x100/1a0b2e/d500f9?text=Michi'">
+                    <div class="cat-widget-info">
+                        <div class="cat-widget-title">JUNTA DIRECTIVA</div>
+                        <span id="widgetCatName" class="cat-widget-name">Cargando...</span>
+                        <span id="widgetCatRole" class="cat-widget-role">...</span>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color:var(--secondary); opacity:0.5; font-size: 1.5rem;"></i>
+                    <div class="cat-progress-bar" id="catProgressBar"></div>
                 </div>
             </div>
         </section>
+
+        <div class="about-extended trigger-bg-change">
+            <h2 style="text-align:center; font-size:2rem; margin-bottom:10px;">Más sobre mí</h2>
+            <p style="text-align:center; opacity:0.7; margin-bottom:30px;">Lo que me mueve y define</p>
+            
+            <h3 style="border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 20px;">Mis Valores</h3>
+            <div class="values-grid">
+                <div class="glow-card stagger-entry"><i class="fas fa-hand-holding-heart"></i><h4>Responsabilidad</h4><p>Compromiso total con cada proyecto y entrega.</p></div>
+                <div class="glow-card stagger-entry"><i class="fas fa-users"></i><h4>Trabajo en Equipo</h4><p>Colaboración para crear grandes soluciones.</p></div>
+                <div class="glow-card stagger-entry"><i class="fas fa-lightbulb"></i><h4>Creatividad</h4><p>Pensamiento innovador fuera de la caja.</p></div>
+                <div class="glow-card stagger-entry"><i class="fas fa-mountain"></i><h4>Resiliencia</h4><p>Aprender y mejorar ante cualquier desafío.</p></div>
+                <div class="glow-card stagger-entry"><i class="fas fa-heart"></i><h4>Empatía</h4><p>Entender al usuario para crear mejor software.</p></div>
+            </div>
+
+            <h3 style="border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 20px; margin-top: 50px;">Mis Pasiones</h3>
+            <div class="passions-grid">
+                <div class="passion-card collecting stagger-entry" onclick="openPassionModal('Coleccionismo', 'Monster High y Carritos. Pequeños tesoros con grandes historias.', 'resources/images/coleccion1.jpg', 'resources/images/coleccion2.jpg')">
+                    <div class="passion-card-bg-slider">
+                        <img src="resources/images/coleccion1.jpg" alt="Coleccion 1" onerror="this.src='https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=600'">
+                        <img src="resources/images/coleccion2.jpg" alt="Coleccion 2" onerror="this.src='https://images.unsplash.com/photo-1536532184021-da4272369e02?q=80&w=600'">
+                    </div>
+                    <i class="fas fa-gem passion-icon"></i><div class="passion-title">Coleccionismo</div><div class="passion-desc">Monster High y Carritos. Click para ver.</div>
+                </div>
+
+                <div class="passion-card animals stagger-entry" onclick="openPassionModal('Apoyo Animal', 'Defensora de quienes no tienen voz. Mis gatos son mi inspiración.', 'resources/images/gatos1.jpg', 'resources/images/gatos2.jpg')">
+                    <div class="passion-card-bg-slider">
+                        <img src="resources/images/gatos1.jpg" alt="Gatos 1" onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600'">
+                        <img src="resources/images/gatos2.jpg" alt="Gatos 2" onerror="this.src='https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=600'">
+                    </div>
+                    <i class="fas fa-paw passion-icon"></i><div class="passion-title">Apoyo Animal</div><div class="passion-desc">Amor por los animales. Click para ver.</div>
+                </div>
+
+                <div class="passion-card art stagger-entry" onclick="openPassionModal('Pintura', 'Arte y color como forma de expresión y creatividad pura.', 'resources/images/arte1.jpg', 'resources/images/arte2.jpg')">
+                    <div class="passion-card-bg-slider">
+                        <img src="resources/images/arte1.jpg" alt="Arte 1" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600'">
+                        <img src="resources/images/arte2.jpg" alt="Arte 2" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb39279c23?q=80&w=600'">
+                    </div>
+                    <i class="fas fa-paint-brush passion-icon"></i><div class="passion-title">Pintura</div><div class="passion-desc">Expresión creativa. Click para ver.</div>
+                </div>
+
+                <div class="passion-card food stagger-entry" onclick="openPassionModal('Gastronomía', 'Probar comida nueva es mi aventura favorita. ¡Foodie de corazón!', 'resources/images/comida1.jpg', 'resources/images/comida2.jpg')">
+                    <div class="passion-card-bg-slider">
+                        <img src="resources/images/comida1.jpg" alt="Comida 1" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600'">
+                        <img src="resources/images/comida2.jpg" alt="Comida 2" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600'">
+                    </div>
+                    <i class="fas fa-utensils passion-icon"></i><div class="passion-title">Gastronomía</div><div class="passion-desc">Aventuras culinarias. Click para ver.</div>
+                </div>
+
+                <div class="passion-card cars stagger-entry" onclick="openPassionModal('Carros', 'Pasión por el diseño automotriz y la velocidad.', 'resources/images/carro1.jpg', 'resources/images/carro2.jpg')">
+                    <div class="passion-card-bg-slider">
+                        <img src="resources/images/carro1.jpg" alt="Carro 1" onerror="this.src='https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=600'">
+                        <img src="resources/images/carro2.jpg" alt="Carro 2" onerror="this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=600'">
+                    </div>
+                    <i class="fas fa-car passion-icon"></i><div class="passion-title">Carros</div><div class="passion-desc">Diseño y velocidad. Click para ver.</div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Modals & Widgets -->
+    <!-- Modals -->
     <div id="modalV2" class="modal-wrap"><div class="modal-box glass-card"><span onclick="closeModal()" style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5rem; color:white;">&times;</span><h3 id="mTitle" style="color:var(--primary);"></h3><div id="mDesc" style="color:#ddd;"></div></div></div>
+    
+    <!-- Chat -->
     <div class="cat-patrol-area"><div class="walking-cat-btn" onclick="toggleChat()"><i class="fas fa-cat"></i></div></div>
     <div class="ai-chat-window" id="aiChat"><div class="chat-header"><h4>Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()"></i></div><div class="chat-body" id="chatBody"><div class="msg bot">¡Miau!</div></div><div class="chat-input-area"><input id="chatInput" class="chat-input"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div>
     

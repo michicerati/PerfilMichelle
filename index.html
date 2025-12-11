@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 <body>
-    <!-- Preloader -->
+    <div class="bg-layer base"></div>
+    <div class="bg-layer alt"></div>
+
     <div id="preloader"><i class="fas fa-cat loader-cat"></i><div class="loader-text">INICIALIZANDO...</div></div>
 
-    <!-- Navegación -->
     <div class="nav-container">
         <nav class="nav-capsule">
             <a href="index.html" class="nav-btn active">Inicio</a>
@@ -26,32 +27,29 @@
         <section class="hero-layout">
             <div class="profile-glow-container">
                 <div class="glow-ring"></div>
-                <img src="resources/images/Perfil.jpg" alt="Perfil" class="profile-img">
+                <img src="resources/images/Perfil.jpg" alt="Perfil Olga" class="profile-img" onerror="this.src='https://placehold.co/200x200?text=Foto'">
             </div>
             <h1>Olga Michelle</h1>
             <div class="typewriter" id="typewriter-text"></div>
             <div class="pitch-glass">"Amo la ingeniería, el aprendizaje constante y los gatos que hacen más ligero cada proyecto. Fusiono la lógica del código con la creatividad del diseño." 🐱⚡</div>
             
             <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-                <a href="#" class="btn-neon" onclick="alert('Descargando CV...')"><i class="fas fa-download"></i> Descargar CV</a>
+                <button class="btn-neon" onclick="alert('Descargando CV...')"><i class="fas fa-download"></i> Descargar CV</button>
                 <a href="contact.html" class="btn-neon btn-outline">Contáctame</a>
             </div>
 
             <div class="social-bar">
-                <a href="https://github.com/michicerati" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:michelleolgacerati@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/michicerati" target="_blank" class="social-icon stagger-entry"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon stagger-entry"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:michelleolgacerati@gmail.com" class="social-icon stagger-entry"><i class="fas fa-envelope"></i></a>
             </div>
         </section>
     </main>
 
     <!-- Widgets -->
     <div class="cat-patrol-area"><div class="walking-cat-btn" onclick="toggleChat()"><i class="fas fa-cat"></i><div class="cat-tooltip">¡Chat IA!</div></div></div>
-    <div class="ai-chat-window" id="aiChat">
-        <div class="chat-header"><h4><i class="fas fa-paw"></i> Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i></div>
-        <div class="chat-body" id="chatBody"><div class="msg bot">¡Miau! Soy el asistente de Olga. 😺</div></div>
-        <div class="chat-input-area"><input type="text" id="chatInput" class="chat-input" placeholder="Escribe..." onkeypress="handleEnter(event)"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div>
-    </div>
+    <div class="ai-chat-window" id="aiChat"><div class="chat-header"><h4>Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()"></i></div><div class="chat-body" id="chatBody"><div class="msg bot">¡Miau! Soy el asistente de Olga. 😺</div></div><div class="chat-input-area"><input type="text" id="chatInput" class="chat-input" placeholder="Escribe..." onkeypress="handleEnter(event)"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div>
+    
     <footer class="site-footer"><p>© 2024 Olga Michelle. Code & Cats <i class="fas fa-cat"></i>.</p></footer>
     <script src="resources/js/script.js"></script>
 </body>

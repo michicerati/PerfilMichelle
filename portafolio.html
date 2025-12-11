@@ -3,442 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olga Michelle | Portafolio</title>
+    <title>Olga Michelle | Proyectos</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- RESET Y CONFIGURACIÓN BASE --- */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Outfit', sans-serif; 
-            text-decoration: none; 
-        }
-
-        html, body { 
-            width: 100%; 
-            height: 100%;
-            background-color: #050505 !important;
-            color: #ffffff;
-        }
-
-        body { 
-            background-color: #050505 !important;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(213, 0, 249, 0.08), transparent 25%), 
-                radial-gradient(circle at 85% 30%, rgba(0, 229, 255, 0.08), transparent 25%);
-            background-attachment: fixed;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        :root {
-            --bg-deep: #050505; 
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --primary: #d500f9;
-            --secondary: #00e5ff;
-            --text-main: #ffffff;
-            --text-muted: #b3b3b3;
-        }
-
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #050505; z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.8s ease;
-        }
-        .loader-cat { font-size: 4rem; animation: bounce 1s infinite alternate; margin-bottom: 20px; color: var(--primary); }
-        .loader-text { font-family: monospace; color: var(--secondary); font-size: 1.2rem; }
-        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-20px); } }
-
-        /* --- NAVEGACIÓN --- */
-        .nav-container {
-            position: fixed; top: 20px; left: 0; width: 100%;
-            display: flex; justify-content: center; z-index: 1000;
-        }
-        .nav-capsule {
-            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border); padding: 8px 12px; border-radius: 100px;
-            display: flex; gap: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        .nav-btn {
-            background: transparent; border: none; color: var(--text-muted);
-            padding: 10px 20px; border-radius: 100px; cursor: pointer; transition: 0.3s ease;
-            font-weight: 600; font-size: 0.9rem;
-        }
-        .nav-btn:hover { color: var(--text-main); background: rgba(255,255,255,0.05); }
-        .nav-btn.active { background: var(--primary); color: white; box-shadow: 0 0 15px rgba(213, 0, 249, 0.4); }
-
-        /* --- SECCIONES OCULTAS POR DEFECTO --- */
-        .page-section { display: none; }
-        .page-section.active { display: block; }
-
-        /* --- LAYOUT GENERAL --- */
-        main {
-            padding-top: 120px; padding-bottom: 50px;
-            width: 90%; max-width: 1200px; margin: 0 auto; min-height: 80vh;
-            animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-
-        /* Hero / Inicio */
-        .hero-layout { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 5vh; }
-        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.2); position: relative; z-index: 2; }
-        .profile-glow-container { position: relative; margin-bottom: 30px; }
-        .glow-ring { position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; border-radius: 50%; background: linear-gradient(45deg, var(--primary), transparent, var(--secondary)); z-index: 1; animation: spin 4s linear infinite; filter: blur(10px); }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 10px; font-weight: 800; }
-        .typewriter { font-size: 1.5rem; color: var(--secondary); font-family: 'Courier New', monospace; margin-bottom: 30px; min-height: 1.5em; }
-        .pitch-glass { background: var(--glass); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border); max-width: 700px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
-
-        /* Botones */
-        .btn-neon { display: inline-flex; align-items: center; gap: 10px; padding: 12px 35px; background: var(--primary); color: white; border-radius: 50px; font-weight: 700; box-shadow: 0 0 10px var(--primary); transition: 0.3s; border: none; cursor: pointer; }
-        .btn-neon:hover { background: #f50057; box-shadow: 0 0 25px #f50057; transform: scale(1.05); }
-        .btn-outline { background:transparent; border:1px solid var(--secondary); box-shadow:none; color:var(--secondary); }
-        .btn-outline:hover { background: rgba(0, 229, 255, 0.1); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); transform: scale(1.05); }
-        .social-bar { margin-top: 30px; display: flex; gap: 20px; }
-        .social-icon { color: white; font-size: 1.5rem; transition: 0.3s; opacity: 0.7; }
-        .social-icon:hover { opacity: 1; color: var(--secondary); transform: translateY(-5px); }
-
-        /* Cards y Layouts */
-        .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
-        .glass-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; }
-        h2 { font-size: 2.5rem; margin-bottom: 20px; background: linear-gradient(to right, #fff, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h3 { color: white; font-size: 1.2rem; margin-top: 30px; }
-        p { color: #ccc; margin-bottom: 20px; line-height: 1.8; }
-
-        /* Timeline y Skills */
-        .timeline { margin-top: 30px; padding-left: 10px; border-left: 2px solid rgba(255,255,255,0.1); }
-        .timeline-item { position: relative; margin-bottom: 25px; padding-left: 20px; }
-        .timeline-item::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; background: var(--secondary); border-radius: 50%; box-shadow: 0 0 10px var(--secondary); }
-        .t-year { font-size: 0.85rem; color: var(--secondary); font-weight: bold; }
-        .t-title { font-size: 1rem; color: white; font-weight: 600; }
-        .skill-item { margin-bottom: 15px; }
-        .skill-name { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; }
-        .progress-bg { height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 10px; width: 0; transition: width 1s ease-out; }
-
-        /* Gatos */
-        .cat-trigger { margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.03); border: 1px dashed var(--secondary); border-radius: 15px; cursor: pointer; text-align: center; transition: 0.3s; color: var(--secondary); display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .cat-trigger:hover { background: rgba(0, 229, 255, 0.1); border-style: solid; box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); transform: scale(1.02); }
-        .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 10px; }
-        .cat-item { text-align: center; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px; border: 1px solid var(--glass-border); transition: 0.3s; }
-        .cat-item:hover { border-color: var(--secondary); transform: translateY(-3px); background: rgba(255,255,255,0.08); }
-        .cat-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); margin: 0 auto 5px; }
-        .cat-name { color: white; font-size: 0.85rem; font-weight: bold; display: block; margin-top: 5px; }
-        .cat-role { color: var(--text-muted); font-size: 0.7rem; }
-
-        /* Portafolio */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-glass { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; }
-        .project-glass:hover { transform: translateY(-10px); background: rgba(255,255,255,0.08); border-color: var(--primary); box-shadow: 0 0 30px rgba(213, 0, 249, 0.2); }
-        .p-image { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid var(--glass-border); filter: grayscale(40%); transition: 0.4s; }
-        .project-glass:hover .p-image { filter: grayscale(0%); }
-        .p-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .p-content h3 { color: var(--secondary); margin-bottom: 10px; font-size: 1.4rem; }
-        .p-content p { color: #ccc; margin-bottom: 20px; font-size: 0.95rem; flex-grow: 1; }
-        .project-actions { display: flex; gap: 10px; }
-        .btn-small { background: transparent; border: 1px solid var(--primary); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-small:hover { background: var(--primary); }
-
-        /* Contacto */
-        .contact-layout-centered { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
-        .big-email { font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 700; color: var(--text-main); margin: 20px 0; display: block; text-decoration: none; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; transition: 0.3s; }
-        .big-email:hover { opacity: 0.8; transform: scale(1.02); }
-        .input-bento { width: 100%; max-width: 500px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; color: white; margin-bottom: 15px; font-size: 1rem; }
-        .input-bento:focus { outline: none; border-color: var(--primary); background: rgba(255,255,255,0.08); }
-        .input-bento::placeholder { color: rgba(255,255,255,0.5); }
-
-        /* Footer y Chat */
-        .site-footer { text-align: center; padding: 20px; color: #666; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; }
-        .cat-patrol-area { position: fixed; bottom: 20px; right: 20px; width: 140px; height: 70px; z-index: 1000; pointer-events: none; }
-        .walking-cat-btn { position: absolute; bottom: 0; left: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), #7c4dff); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.8rem; cursor: pointer; pointer-events: auto; box-shadow: 0 5px 20px rgba(0,0,0,0.5); animation: patrolWalk 8s linear infinite; }
-        .walking-cat-btn i { animation: bounceWalk 0.4s infinite alternate ease-in-out; }
-        @keyframes patrolWalk { 0% { left: 0; transform: scaleX(1); } 45% { left: 80px; transform: scaleX(1); } 50% { left: 80px; transform: scaleX(-1); } 95% { left: 0; transform: scaleX(-1); } 100% { left: 0; transform: scaleX(1); } }
-        @keyframes bounceWalk { from { transform: translateY(0); } to { transform: translateY(-5px); } }
-        .cat-tooltip { position: absolute; top: -35px; left: 0; width: 100%; text-align: center; background: white; color: black; padding: 4px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; opacity: 0; transition: 0.3s; pointer-events: none; }
-        .walking-cat-btn:hover .cat-tooltip { opacity: 1; top: -45px; }
-        .ai-chat-window { position: fixed; bottom: 90px; right: 20px; width: 320px; height: 450px; background: #151030; border: 1px solid var(--glass-border); border-radius: 20px; z-index: 1000; display: flex; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.5); transform-origin: bottom right; transform: scale(0); opacity: 0; pointer-events: none; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); overflow: hidden; }
-        .ai-chat-window.open { transform: scale(1); opacity: 1; pointer-events: all; }
-        .chat-header { padding: 15px; background: linear-gradient(90deg, var(--primary), #7c4dff); color: white; display: flex; align-items: center; justify-content: space-between; }
-        .chat-body { flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.2); font-size: 0.85rem; }
-        .msg { padding: 8px 12px; border-radius: 12px; max-width: 85%; line-height: 1.4; animation: popIn 0.3s forwards; }
-        .msg.bot { background: rgba(255,255,255,0.1); color: #ddd; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .msg.user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
-        @keyframes popIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .chat-input-area { padding: 10px; border-top: 1px solid var(--glass-border); display: flex; gap: 5px; background: #1a1a2e; }
-        .chat-input { flex-grow: 1; background: rgba(255,255,255,0.05); border: none; color: white; padding: 8px 12px; border-radius: 20px; font-size: 0.85rem; }
-        .chat-input:focus { outline: none; background: rgba(255,255,255,0.1); }
-        .send-btn { background: var(--secondary); border: none; width: 35px; height: 35px; border-radius: 50%; color: #000; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .modal-wrap { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal-box { background: #1a1a2e; border: 1px solid var(--primary); padding: 40px; border-radius: 20px; width: 90%; max-width: 600px; position: relative; box-shadow: 0 0 50px rgba(213, 0, 249, 0.3); max-height: 90vh; overflow-y: auto; }
-        @media (max-width: 768px) { .about-split { grid-template-columns: 1fr; } h1 { font-size: 2.5rem; } .cat-grid { grid-template-columns: repeat(2, 1fr); } }
-    </style>
+    <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 <body>
-    <!-- Preloader -->
-    <div id="preloader"><i class="fas fa-cat loader-cat"></i><div class="loader-text">INICIALIZANDO...</div></div>
+    <div class="bg-layer base"></div>
+    <div class="bg-layer alt"></div>
 
-    <!-- Navegación -->
+    <div id="preloader"><i class="fas fa-cat loader-cat"></i><div class="loader-text">CARGANDO...</div></div>
+
     <div class="nav-container">
         <nav class="nav-capsule">
-            <a href="#" class="nav-btn active" onclick="showPage('inicio')">Inicio</a>
-            <a href="#" class="nav-btn" onclick="showPage('about')">Acerca de Mí</a>
-            <a href="#" class="nav-btn" onclick="showPage('proyectos')">Proyectos</a>
-            <a href="#" class="nav-btn" onclick="showPage('contacto')">Contacto</a>
+            <a href="index.html" class="nav-btn">Inicio</a>
+            <a href="about.html" class="nav-btn">Acerca de Mí</a>
+            <a href="porfolio.html" class="nav-btn active">Proyectos</a>
+            <a href="contact.html" class="nav-btn">Contacto</a>
         </nav>
     </div>
 
     <main>
-        <!-- PÁGINA: INICIO -->
-        <section id="inicio" class="page-section active hero-layout">
-            <div class="profile-glow-container">
-                <div class="glow-ring"></div>
-                <img src="resources/images/Perfil.jpg" alt="Perfil" class="profile-img">
-            </div>
-            <h1>Olga Michelle</h1>
-            <div class="typewriter" id="typewriter-text"></div>
-            <div class="pitch-glass">"Amo la ingeniería, el aprendizaje constante y los gatos que hacen más ligero cada proyecto. Fusiono la lógica del código con la creatividad del diseño." 🐱⚡</div>
-            
-            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-                <a href="#" class="btn-neon" onclick="alert('Descargando CV...')"><i class="fas fa-download"></i> Descargar CV</a>
-                <a href="#" class="btn-neon btn-outline" onclick="showPage('contacto')">Contáctame</a>
-            </div>
-
-            <div class="social-bar">
-                <a href="https://github.com/michicerati" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:michelleolgacerati@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-            </div>
-        </section>
-
-        <!-- PÁGINA: ACERCA DE MÍ -->
-        <section id="about" class="page-section about-split">
-            <div class="glass-card">
-                <h2>¿Quién soy?</h2>
-                <p>
-                    Soy <strong>Olga Michelle Rodríguez Bahena</strong>, originaria de León, Gto. Desde la preparatoria, me apasionó la ingeniería en computación, la programación web y los videojuegos. <br><br>
-                    A lo largo de la carrera, he aprendido de grandes profesionales y me enfoco en el liderazgo y el trabajo en equipo.
-                </p>
-                <h3>Trayectoria</h3>
-                <div class="timeline">
-                    <div class="timeline-item"><div class="t-year">2020</div><div class="t-title">Inicios en Programación</div></div>
-                    <div class="timeline-item"><div class="t-year">2023</div><div class="t-title">Ingreso a UDL (Ing. Computación)</div></div>
-                    <div class="timeline-item"><div class="t-year">Actualidad</div><div class="t-title">Desarrollando perfil Fullstack</div></div>
-                </div>
-            </div>
-
-            <div class="glass-card">
-                <h3 style="margin-top: 0;">Skills</h3>
-                <div class="skill-item"><div class="skill-name"><span>Frontend</span><span>50%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 50%"></div></div></div>
-                <div class="skill-item"><div class="skill-name"><span>UI Design</span><span>40%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 40%"></div></div></div>
-                <div class="skill-item"><div class="skill-name"><span>Liderazgo</span><span>80%</span></div><div class="progress-bg"><div class="progress-fill" style="width: 80%"></div></div></div>
-
-                <div class="cat-trigger" onclick="openCatsModal()" style="margin-top: 30px;">
-                    <i class="fas fa-cat" style="font-size: 1.8rem;"></i>
-                    <div style="text-align:left;"><div style="font-weight:bold; font-size:1rem;">Junta Directiva (9 Gatos)</div><div style="font-size:0.8rem; opacity:0.8;">Click para conocer al equipo</div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PÁGINA: PROYECTOS -->
-        <section id="proyectos" class="page-section" style="width: 90%; max-width: 1200px; margin: 0 auto;">
+        <section>
             <h2 style="text-align: center; margin-bottom: 40px;">Proyectos Destacados</h2>
             <div class="grid-3">
-                <div class="project-glass">
-                    <img src="resources/images/MichiDolls.jpg" alt="MonsterDolls" class="p-image">
+                <!-- Proyecto 1 -->
+                <div class="project-glass stagger-entry">
+                    <img src="resources/images/MichiDolls.jpg" alt="MonsterDolls" class="p-image" onerror="this.src='https://images.unsplash.com/photo-1544983570-877227d853e5?q=80&w=600'">
                     <div class="p-content">
                         <h3>MonsterDolls</h3>
                         <p>Santuario web "Dark Coquette" para coleccionistas.</p>
                         <div class="project-actions">
-                            <button class="btn-small" onclick="openModal('MonsterDolls', 'Página web tipo santuario para coleccionistas de Monster High.')"><i class="fas fa-info"></i> Info</button>
+                            <button class="btn-small" onclick="openModal('MonsterDolls', 'Página web tipo santuario para coleccionistas de Monster High. Estética oscura y detallada.')"><i class="fas fa-info"></i> Info</button>
                             <a href="https://michicerati.github.io/-MonsterDolls/" target="_blank" class="btn-small" style="background:var(--primary); border:none;"><i class="fab fa-github"></i> Ver Web</a>
                         </div>
                     </div>
                 </div>
-                <div class="project-glass">
-                    <img src="resources/images/CongresoUDL.jpg" alt="Congreso de Ingenierias UDL" class="p-image">
+                <!-- Proyecto 2 -->
+                <div class="project-glass stagger-entry">
+                    <img src="resources/images/CongresoUDL.jpg" alt="Congreso UDL" class="p-image" onerror="this.src='https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=600'">
                     <div class="p-content">
-                        <h3>Congreso de Ingenierías - UDL</h3>
-                        <p>Landing creada para el congreso de ingenierías de la UDL. Contiene secciones informativas y registro.</p>
+                        <h3>Congreso UDL</h3>
+                        <p>Landing page oficial para el congreso de ingenierías.</p>
                         <div class="project-actions">
-                            <button class="btn-small" onclick="openModal('Congreso UDL', 'Landing para el congreso de ingenierías. Incluye formulario y secciones responsivas.')"><i class="fas fa-info"></i> Info</button>
+                            <button class="btn-small" onclick="openModal('Congreso UDL', 'Landing page responsiva con formulario de registro, agenda y speakers.')"><i class="fas fa-info"></i> Info</button>
                             <a href="https://michicerati.github.io/ejemplo_web_udl/landing.html" target="_blank" class="btn-small" style="background:var(--primary); border:none;"><i class="fas fa-external-link-alt"></i> Ver Web</a>
                         </div>
                     </div>
                 </div>
-                <div class="project-glass">
-                    <img src="resources/images/michicafe.jpg" alt="MichiCafé" class="p-image">
+                <!-- Proyecto 3 -->
+                <div class="project-glass stagger-entry">
+                    <img src="resources/images/michicafe.jpg" alt="MichiCafé" class="p-image" onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600'">
                     <div class="p-content">
                         <h3>MichiCafé</h3>
                         <p>Concepto E-Commerce para cafetería temática.</p>
                         <div class="project-actions">
-                            <button class="btn-small" onclick="openModal('MichiCafé', 'Sitio conceptual sobre un café temático de gatos.')"><i class="fas fa-info"></i> Info</button>
+                            <button class="btn-small" onclick="openModal('MichiCafé', 'Sitio web conceptual que mezcla gatos y café, con menú interactivo.')"><i class="fas fa-info"></i> Info</button>
                             <a href="https://michicerati.github.io/examenMichiCoffe/menu.html" target="_blank" class="btn-small" style="background:var(--primary); border:none;"><i class="fab fa-github"></i> Ver Web</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- PÁGINA: CONTACTO -->
-        <section id="contacto" class="page-section contact-layout-centered">
-            <div class="glass-card" style="max-width: 700px; width:100%;">
-                <i class="fas fa-paper-plane" style="font-size: 2.5rem; color: var(--text-muted); margin-bottom: 20px;"></i>
-                <h2 style="text-align: center;">Iniciemos algo increíble</h2>
-                <a href="mailto:michelleolgacerati@gmail.com" class="big-email">michelleolgacerati<br>@gmail.com</a>
-                <form id="contactForm" style="width:100%; display:flex; flex-direction:column; align-items:center;">
-                    <input type="text" id="nombre" class="input-bento" placeholder="Tu Nombre" required>
-                    <input type="email" id="correo" class="input-bento" placeholder="Tu Correo" required>
-                    <textarea id="mensaje" rows="4" class="input-bento" placeholder="¿Cómo puedo ayudarte?" required></textarea>
-                    <button type="submit" class="btn-neon" style="width: 100%; max-width: 500px; margin-top:10px;">Enviar Mensaje</button>
-                </form>
-            </div>
-        </section>
     </main>
 
-    <!-- Modal -->
-    <div id="modalV2" class="modal-wrap"><div class="modal-box"><span onclick="closeModal()" style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5rem; color:white;">&times;</span><h3 id="mTitle" style="color:var(--primary);"></h3><div id="mDesc" style="color:#ddd;"></div></div></div>
-
-    <!-- Chat -->
-    <div class="cat-patrol-area"><div class="walking-cat-btn" onclick="toggleChat()"><i class="fas fa-cat"></i><div class="cat-tooltip">¡Chat IA!</div></div></div>
-    <div class="ai-chat-window" id="aiChat"><div class="chat-header"><h4><i class="fas fa-paw"></i> Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i></div><div class="chat-body" id="chatBody"><div class="msg bot">¡Miau! Soy el asistente de Olga. 😺</div></div><div class="chat-input-area"><input type="text" id="chatInput" class="chat-input" placeholder="Escribe..." onkeypress="handleEnter(event)"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div>
+    <!-- Modals y Chat -->
+    <div id="modalV2" class="modal-wrap"><div class="modal-box glass-card"><span onclick="closeModal()" style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5rem; color:white;">&times;</span><h3 id="mTitle" style="color:var(--primary);"></h3><div id="mDesc" style="color:#ddd;"></div></div></div>
+    <div class="cat-patrol-area"><div class="walking-cat-btn" onclick="toggleChat()"><i class="fas fa-cat"></i></div></div>
+    <div class="ai-chat-window" id="aiChat"><div class="chat-header"><h4>Michi-Asistente</h4><i class="fas fa-times" onclick="toggleChat()"></i></div><div class="chat-body" id="chatBody"><div class="msg bot">¡Miau!</div></div><div class="chat-input-area"><input id="chatInput" class="chat-input"><button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div>
     
-    <footer class="site-footer"><p>© 2024 Olga Michelle. Code & Cats <i class="fas fa-cat"></i>.</p></footer>
-
-    <script>
-        // --- LOGICA DE CARGA (Preloader) ---
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if(preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                        if(document.getElementById('typewriter-text')) typeWriter();
-                    }, 800);
-                }, 800);
-            }
-        });
-
-        // --- EFECTO TYPEWRITER ---
-        const textToType = "Estudiante de Ingeniería en Computación | Dev & Design";
-        const typeContainer = document.getElementById('typewriter-text');
-        let typeIndex = 0;
-        function typeWriter() {
-            if (typeIndex < textToType.length && typeContainer) {
-                typeContainer.innerHTML += textToType.charAt(typeIndex);
-                typeIndex++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-
-        // --- NAVEGACIÓN ENTRE PÁGINAS ---
-        function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        // --- MODAL ---
-        function openModal(title, textOrHtml) {
-            const titleEl = document.getElementById('mTitle');
-            const descEl = document.getElementById('mDesc');
-            const modalEl = document.getElementById('modalV2');
-            
-            if(titleEl && descEl && modalEl) {
-                titleEl.innerText = title;
-                descEl.innerHTML = textOrHtml;
-                modalEl.style.display = 'flex';
-            }
-        }
-        function closeModal() { 
-            const modal = document.getElementById('modalV2');
-            if(modal) modal.style.display = 'none'; 
-        }
-        window.onclick = function(e) { 
-            const modal = document.getElementById('modalV2');
-            if(e.target == modal) closeModal(); 
-        }
-
-        function openCatsModal() {
-            const catsData = [
-                { name: "Michi 1", role: "CEO", img: "https://placehold.co/100x100/1a0b2e/00e5ff?text=Cat1" },
-                { name: "Michi 2", role: "Seguridad", img: "https://placehold.co/100x100/1a0b2e/d500f9?text=Cat2" },
-                { name: "Michi 3", role: "Tester", img: "https://placehold.co/100x100/1a0b2e/ffb74d?text=Cat3" },
-                { name: "Michi 4", role: "Backend", img: "https://placehold.co/100x100/1a0b2e/00e5ff?text=Cat4" },
-                { name: "Michi 5", role: "Diseño", img: "https://placehold.co/100x100/1a0b2e/d500f9?text=Cat5" },
-                { name: "Michi 6", role: "Soporte", img: "https://placehold.co/100x100/1a0b2e/ffb74d?text=Cat6" },
-                { name: "Michi 7", role: "RH", img: "https://placehold.co/100x100/1a0b2e/00e5ff?text=Cat7" },
-                { name: "Michi 8", role: "Manager", img: "https://placehold.co/100x100/1a0b2e/d500f9?text=Cat8" },
-                { name: "Michi 9", role: "Becario", img: "https://placehold.co/100x100/1a0b2e/ffb74d?text=Cat9" }
-            ];
-            let html = '<div class="cat-grid">';
-            catsData.forEach(cat => {
-                html += `<div class="cat-item"><img src="${cat.img}" class="cat-img" alt="${cat.name}"><span class="cat-name">${cat.name}</span><span class="cat-role">${cat.role}</span></div>`;
-            });
-            html += '</div>';
-            openModal('La Junta Directiva 🐱', html);
-        }
-
-        // --- FORMULARIO ---
-        const form = document.getElementById('contactForm');
-        if(form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert("¡Mensaje enviado! 🚀");
-                e.target.reset();
-            });
-        }
-
-        // --- CHAT IA ---
-        function toggleChat() { 
-            const chat = document.getElementById('aiChat');
-            if(chat) chat.classList.toggle('open'); 
-        }
-        function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const body = document.getElementById('chatBody');
-            if(!input || !body) return;
-            
-            const txt = input.value.trim().toLowerCase();
-            if(!txt) return;
-
-            const userDiv = document.createElement('div');
-            userDiv.className = 'msg user';
-            userDiv.innerText = input.value;
-            body.appendChild(userDiv);
-            input.value = '';
-            body.scrollTop = body.scrollHeight;
-
-            setTimeout(() => {
-                let reply = "Miau... aún estoy aprendiendo. 😿 Prueba: 'proyectos', 'contacto' o 'gatos'.";
-                if (txt.includes('hola') || txt.includes('hi')) reply = "¡Prrr! ¡Hola humano! 🐾";
-                else if (txt.includes('gato') || txt.includes('michi')) reply = "¡Somos 9 en total! Los verdaderos jefes. 😻";
-                else if (txt.includes('proyecto') || txt.includes('trabajo')) reply = "Olga ha creado MonsterDolls, una web de congreso y MichiCafé. 💻";
-                else if (txt.includes('contacto') || txt.includes('correo')) reply = "Escríbele a: michelleolgacerati@gmail.com 📧";
-                else if (txt.includes('habilidad') || txt.includes('saber')) reply = "Frontend, UI y Liderazgo. ¡Una crack! ⚡";
-                
-                const botDiv = document.createElement('div');
-                botDiv.className = 'msg bot';
-                botDiv.innerHTML = reply;
-                body.appendChild(botDiv);
-                body.scrollTop = body.scrollHeight;
-            }, 600);
-        }
-    </script>
+    <footer class="site-footer"><p>© 2024 Olga Michelle.</p></footer>
+    <script src="resources/js/script.js"></script>
 </body>
 </html>
